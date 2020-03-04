@@ -17,12 +17,6 @@ int verify(point p, point a, point b) {
   double by = (double)b.y;
   double px = (double)p.x;
   double py = (double)p.y;
-  double dx = fabs(bx-ax);
-  double dy = fabs(by-ay);
-  double Dx = fabs((px - ax)/dx);
-  double Dy = fabs((py - ay)/dy);
-  double rp = Dx/Dy;
-  double rr = dx/dy;
   double mr = (by-ay)/(bx-ax);
   double mp = (py-ay)/(px-ax);
 
@@ -35,10 +29,7 @@ int verify(point p, point a, point b) {
   if ((by - ay <= zero) && (by < py && py <= ay) && (bx - ax <= zero) && (px <= bx) ) {return 1;}
   if ((by - ay <= zero) && (by < py && py <= ay) && (ax - bx <= zero) && (px <= ax) ) {return 1;}
 
-  
-  //if (px < bx && py < by || && ay != by && ax != bx) {return 1;}
-  //if (ay - by <= zero && py < ay && py > by) {return 1;}
-  //if (ay - by <= zero && py > ay && py < by) {return 1;}
+
   return 0;
 }
 
