@@ -24,11 +24,10 @@ int verify(point p, point a, point b) {
   if (  (distance(ax, ay, px, py) + distance(bx, by, px, py) == distance(ax, ay, bx, by))  &&  (              ((ax == px) && (ay == py)) || ((bx == px) && (by == py))  ))  {return 2;}
   if (  (distance(ax, ay, px, py) + distance(bx, by, px, py) == distance(ax, ay, bx, by))  &&  (              (       (ax == bx)       ) || (       (ay == by)       )  ))  {return 2;}
 
-  if ((ay - by <= zero)   &&  (ay < py && py <= by)    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
-  if ((ay - by <= zero)   &&  (ay < py && py <= by)    &&    (bx - ax <= zero)  &&  (px <= bx)) {return 1;}
-  if ((by - ay <= zero)   &&  (by < py && py <= ay)    &&    (bx - ax <= zero)  &&  (px <= bx)) {return 1;}
-  if ((by - ay <= zero)   &&  (by < py && py <= ay)    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
-
+  if ((ay - by <= zero)  &&  ((ay < py) && (py <= by))    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
+  if ((ay - by <= zero)  &&  ((ay < py) && (py <= by))    &&    (bx - ax <= zero)  &&  (px <= bx)) {return 1;}
+  if ((by - ay <= zero)  &&  ((by < py) && (py <= ay))    &&    (bx - ax <= zero)  &&  (px <= bx)) {return 1;}
+  if ((by - ay <= zero)  &&  ((by < py) && (py <= ay))    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
 
   return 0;
 }
