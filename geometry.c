@@ -25,13 +25,12 @@ int verify(point p, point a, point b) {
   int infill = 0;
   
 
-  if (  (distance(ax, ay, px, py) + distance(bx, by, px, py) == distance(ax, ay, bx, by))  &&  ((fabs(mr-mp)<=zero) && ((fabs(ax-px)>zero) && (fabs(ay-py)>zero)) && ((fabs(bx-px)>zero) && (fabs(by-py)>zero))  ))  {return 2;} //https://stackoverflow.com/questions/17692922/check-is-a-point-x-y-is-between-two-points-drawn-on-a-straight-line
-  if (  (distance(ax, ay, px, py) + distance(bx, by, px, py) == distance(ax, ay, bx, by))  &&  (              ((fabs(ax-px)<=zero) && (fabs(ay-py)<=zero)) || ((fabs(bx-px)<=zero) && (fabs(by-py)<=zero))  ))  {return 2;}
-  if (  (distance(ax, ay, px, py) + distance(bx, by, px, py) == distance(ax, ay, bx, by))  &&  (              (       (fabs(ax-bx)<=zero)       ) || (       (fabs(ay-by)<=zero)       )  ))  {return 2;}
-
-  if (  (distance(ax, ay, xd, py) + distance(bx, by, xd, py) == distance(ax, ay, bx, by))  &&  ((fabs(mr-mp)<=zero) && ((fabs(ax-xd)>zero) && (fabs(ay-xd)>zero)) && ((fabs(bx-xd)>zero) && (fabs(by-py)>zero))  ))  {infill = 1;}
-  if (  (distance(ax, ay, xd, py) + distance(bx, by, xd, py) == distance(ax, ay, bx, by))  &&  (              ((fabs(ax-xd)<=zero) && (fabs(ay-xd)<=zero)) || ((fabs(bx-xd)<=zero) && (fabs(by-py)<=zero))  ))  {infill = 1;}
-  if (  (distance(ax, ay, xd, py) + distance(bx, by, xd, py) == distance(ax, ay, bx, by))  &&  (              (       (fabs(ax-bx)<=zero)       ) || (       (fabs(ay-by)<=zero)       )  ))  {infill = 1;}
+  if (  (fabs((distance(ax, ay, px, py) + distance(bx, by, px, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  ((fabs(mr-mp)<=zero) && ((fabs(ax-px)>zero) && (fabs(ay-py)>zero)) && ((fabs(bx-px)>zero) && (fabs(by-py)>zero))  ))  {return 2;} //https://stackoverflow.com/questions/17692922/check-is-a-point-x-y-is-between-two-points-drawn-on-a-straight-line
+  if (  (fabs((distance(ax, ay, px, py) + distance(bx, by, px, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              ((fabs(ax-px)<=zero) && (fabs(ay-py)<=zero)) || ((fabs(bx-px)<=zero) && (fabs(by-py)<=zero))  ))  {return 2;}
+  if (  (fabs((distance(ax, ay, px, py) + distance(bx, by, px, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (       (fabs(ax-bx)<=zero)       ) || (       (fabs(ay-by)<=zero)       )  ))  {return 2;}
+  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  ((fabs(mr-mp)<=zero) && ((fabs(ax-xd)>zero) && (fabs(ay-xd)>zero)) && ((fabs(bx-xd)>zero) && (fabs(by-py)>zero))  ))  {infill = 1;}
+  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              ((fabs(ax-xd)<=zero) && (fabs(ay-xd)<=zero)) || ((fabs(bx-xd)<=zero) && (fabs(by-py)<=zero))  ))  {infill = 1;}
+  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (       (fabs(ax-bx)<=zero)       ) || (       (fabs(ay-by)<=zero)       )  ))  {infill = 1;}
   
   
 
