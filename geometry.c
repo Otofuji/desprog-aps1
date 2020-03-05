@@ -42,7 +42,7 @@ int verify(point p, point a, point b) {
   if ((ay < by)  &&  ((ay < py) && (py > by))    &&      ((px <= xd) && (fabs(ax-bx) > zero))   &&   (il == 1)) {return 1;}
   if ((by < by)  &&  ((by < py) && (py > ay))    &&      ((px <= xd) && (fabs(ax-bx) > zero))   &&   (il == 1)) {return 1;}
   if ((fabs(ax - bx) <= zero) && (((ay < by) && (fabs(ax-bx) > zero)) || ((by < ay) && (fabs(ax-bx) > zero))))  {return 1;}
-  
+
   return 0;
 }
 
