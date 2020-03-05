@@ -10,7 +10,7 @@ double distance(double ax, double ay, double bx, double by) {
 }
 
 int verify(point p, point a, point b) {
-  int    il = 0;
+  //int    il = 0;
   double zero = 0.000001;
 
   double ax = (double)a.x;
@@ -23,7 +23,7 @@ int verify(point p, point a, point b) {
   double mr = (by-ay)/(bx-ax);
   double mp = (py-ay)/(px-ax);
   double xp = (py-ay)/mr;
-  double xd = px - xp;
+  double xd = px + xp;
   double md = (py-ay)/(xd-ax);
   
   
@@ -33,12 +33,12 @@ int verify(point p, point a, point b) {
   if (  (fabs((distance(ax, ay, px, py) + distance(bx, by, px, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (   (fabs(ax-px) <= zero)      && (fabs(ay-py) <= zero))   || ((fabs(bx-px) <= zero) && (fabs(by-py) <= zero))  ))  {return 2;}
   if (  (fabs((distance(ax, ay, px, py) + distance(bx, by, px, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (                  (fabs(ax-bx)<=zero)                   ) || (               (fabs(ay-by)<=zero)            )  ))  {return 2;}
 
-  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  ((fabs(mr-md) <= zero) && ((fabs(ax-xd) > zero) && (fabs(ay-py) >  zero)) && ((fabs(bx-xd) >  zero) && (fabs(by-py) >  zero))  ))  {il = 1;}
-  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (    (fabs(ax-xd)<=zero)       && (fabs(ay-py)<=zero))     || ((fabs(bx-xd) <= zero) && (fabs(by-py) <= zero))  ))  {il = 1;}
-  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (                  (fabs(ax-bx)<=zero)                   ) || (               (fabs(ay-by)<=zero)            )  ))  {il = 1;}
+  //if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  ((fabs(mr-md) <= zero) && ((fabs(ax-xd) > zero) && (fabs(ay-py) >  zero)) && ((fabs(bx-xd) >  zero) && (fabs(by-py) >  zero))  ))  {il = 1;}
+  //if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (    (fabs(ax-xd)<=zero)       && (fabs(ay-py)<=zero))     || ((fabs(bx-xd) <= zero) && (fabs(by-py) <= zero))  ))  {il = 1;}
+  //if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (                  (fabs(ax-bx)<=zero)                   ) || (               (fabs(ay-by)<=zero)            )  ))  {il = 1;}
   
-  if (((ay < by)  &&  ((ay < py) && (py <= by)))    &&      ((px <= xd) && (fabs(ax-bx) > zero))) {return 1;}
-  if (((by < ay)  &&  ((by < py) && (py <= ay)))    &&      ((px <= xd) && (fabs(ax-bx) > zero))) {return 1;}
+  if (((ay < by)  &&  ((py > ay) && (py <= by)))    &&    ((px <= xd) && (fabs(ax-bx) > zero))) {return 1;}
+  if (((by < ay)  &&  ((py > by) && (py <= ay)))    &&    ((px <= xd) && (fabs(ax-bx) > zero))) {return 1;}
   if ((fabs(ax - bx) <= zero) && (((ay < by) && by < py && ay > py) || ((ay < by) && by < py && ay > py)))  {return 1;}
 
   return 0;
