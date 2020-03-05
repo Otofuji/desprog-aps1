@@ -35,19 +35,13 @@ int verify(point p, point a, point b) {
   
 
 
-  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  ((fabs(mr-md) <= zero) && ((fabs(ax-xd) > zero) && (fabs(ay-py) >  zero)) && ((fabs(bx-xd) >  zero) && (fabs(by-py) >  zero))  ))  {il = 1;}
+  if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  ((fabs(mr-md) >= zero) && ((fabs(ax-xd) > zero) && (fabs(ay-py) >  zero)) && ((fabs(bx-xd) >  zero) && (fabs(by-py) >  zero))  ))  {il = 1;}
   if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (    (fabs(ax-xd)<=zero)       && (fabs(ay-py)<=zero))     || ((fabs(bx-xd) <= zero) && (fabs(by-py) <= zero))  ))  {il = 1;}
   if (  (fabs((distance(ax, ay, xd, py) + distance(bx, by, xd, py)) - (distance(ax, ay, bx, by))) <= zero)  &&  (              (                  (fabs(ax-bx)<=zero)                   ) || (               (fabs(ay-by)<=zero)            )  ))  {il = 1;}
   
   if ((ay < by)  &&  ((ay < py) && (py > by))    &&      ((px <= xd) && (fabs(ax-bx) > zero))   &&   (il == 1)) {return 1;}
   if ((by < by)  &&  ((by < py) && (py > ay))    &&      ((px <= xd) && (fabs(ax-bx) > zero))   &&   (il == 1)) {return 1;}
   if ((fabs(ax - bx) <= zero) && (((ay < by) && (fabs(ax-bx) > zero)) || ((by < ay) && (fabs(ax-bx) > zero))))  {return 1;}
-
-
-  //if ((ay - by <= zero)  &&  ((ay < py) && (py > by))    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
-  //if ((ay - by <= zero)  &&  ((ay < py) && (py > by))    &&    (bx - ax <= zero)  &&  (px <= bx)) {return 1;}
-  //if ((by - ay <= zero)  &&  ((by < py) && (py > ay))    &&    (bx - ax <= zero)  &&  (px <= bx)) {return 1;}
-  //if ((by - ay <= zero)  &&  ((by < py) && (py > ay))    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
 
   return 0;
 }
