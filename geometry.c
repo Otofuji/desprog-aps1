@@ -22,8 +22,6 @@ int verify(point p, point a, point b) {
   double mp = (py-ay)/(px-ax);
   double xp = (py-ay)/mr;
   double xd = px - xp;
-
-  point d;
   int infill = 0;
   
 
@@ -40,7 +38,7 @@ int verify(point p, point a, point b) {
   if ((ay < by)  &&  ((ay < py) && (py > by))    &&      ((px <= xd) && (fabs(ax-bx) > zero))   &&   (infill == 1)) {return 1;}
   if ((by < by)  &&  ((by < py) && (py > ay))    &&      ((px <= xd) && (fabs(ax-bx) > zero))   &&   (infill == 1)) {return 1;}
 
-  if (fabs(ax - bx) <= zero && ((ay < by && (fabs(ax-bx) > zero)) || (by < ay && (fabs(ax-bx) > zero)))) {return 1;}
+  if ((fabs(ax - bx) <= zero) && (((ay < by) && (fabs(ax-bx) > zero)) || ((by < ay) && (fabs(ax-bx) > zero)))) {return 1;}
 
 
   //if ((ay - by <= zero)  &&  ((ay < py) && (py > by))    &&    (ax - bx <= zero)  &&  (px <= ax)) {return 1;}
