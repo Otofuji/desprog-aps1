@@ -24,7 +24,7 @@ int verify(point p, point a, point b) {
   double mp = (py-ay)/(px-ax);
   double xp = (py-ay)/mr;
   double xd = px + xp;
-  double md = (py-ay)/(xd-ax);
+  //double md = (py-ay)/(xd-ax);
   
   
   
