@@ -34,12 +34,38 @@ int verify(point p, point a, point b) {
   return 0;
 }
 
+int isline(point p, point poly[], int n){
+  int chck = 0;
+  if (n == 1) {return chck;}
+  if ((verify(p, poly[n-2], poly[n-1]) == 2)) {return 1;}
+  return chck || isline(p, poly, n-1); 
+}
+
+int iscross(point p, point poly[], int n){
+  int chck = 0;
+  if (n == 1) {return chck;}
+  if ((verify(p, poly[n-2], poly[n-1]) == 1)) {chck = 1;}
+  return chck + iscross(p, poly, n-1); 
+}
+
 int inside(point p, point poly[], int n) {
-  int check = 0;
-  if (verify(p, poly[n], poly[n+1]) == 2) {return check + 1;}
-  if (n == 0 && (check % 2 == 1)) {return check + 1;}
-  if (n == 0 && (check % 2 == 0)) {return 0;}
-  if (verify(p, poly[n], poly[n+1]) == 1) {check++;}
-  return 0 + inside(p, poly, n-1);
+  if (isline(p, poly, n) == 1) {return 1;}
+  if ((iscross(p, poly, n) != 0) && ((iscross(p, poly, n) % 2) == 1)) {return 1;}
+  return 0;
+  
+  //int check = 0;
+  //if (n==0) {return check;}
+  //if ((verify(p, poly[n], poly[n+1]) == 2) {n = 0; check = 1; return 1;}
+  //check += verify(p, poly[n], poly[n+1]);
+  //return (check != 0 && check % 2) && inside(p, poly, n-1);
+
+
+
+
+  //if (verify(p, poly[n], poly[n+1]) == 2) {n = 0; check = 1; return check;}
+  //if (n == 0 && (check % 2 == 1)) {return check + 1;}
+  //if (n == 0 && (check % 2 == 0)) {return 0;}
+  //if (verify(p, poly[n], poly[n+1]) == 1) {check++;}
+  //return 0 + inside(p, poly, n-1);
   
 }
