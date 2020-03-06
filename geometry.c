@@ -35,5 +35,10 @@ int verify(point p, point a, point b) {
 }
 
 int inside(point p, point poly[], int n) {
+  int check = 0;
+  if (verify(p, poly[n], poly[n+1]) == 2) {return 1;}
+  if (n == 0 && (check % 2 == 0)) {return 1;}
+  if (verify(p, poly[n], poly[n+1]) == 1) {check++;}
+  inside(p, poly, n-1);
   return 0;
 }
